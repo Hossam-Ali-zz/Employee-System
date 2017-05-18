@@ -1,0 +1,40 @@
+package employeepackage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.portlet.ModelAndView;
+
+@Controller
+public class UserController {
+	@Autowired
+	private UserService userserv;
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	protected ModelAndView userLogin(@ModelAttribute("user") User user) {
+		Boolean check = userserv.checkLogin(user.getUserName(), user.getPassword());
+		User u = userserv.findByUserName(user.getUserName());
+		ModelAndView mw = new ModelAndView();
+		mw.addObject(user);
+		if (!check) {
+			mw.setViewName("login");
+			return mw;
+		}
+		if (u.getUserType()) {
+			return "data";
+		}
+		mw.setViewName("listEmployees");
+		return "redirect:listEmployees";
+	}
+
+	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
+	protected String createUser(@ModelAttribute("user") User user) {
+		userserv.insertUser(user);
+		User u = userserv.findByUserName(user.getUserName());
+		if (u.getUserType())
+			return "data";
+		return "redirect:listEmployees";
+	}
+}

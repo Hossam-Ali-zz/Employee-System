@@ -1,0 +1,18 @@
+package employeepackage;
+
+import java.util.List;
+
+public interface UserDAO {
+
+	public void delete(int id);
+
+	public void insert(User U);
+
+	public List<Employee> select();
+
+	public void update(Employee E);
+
+	Employee findById(int id);
+
+	public Boolean checkLogin(String email);
+}

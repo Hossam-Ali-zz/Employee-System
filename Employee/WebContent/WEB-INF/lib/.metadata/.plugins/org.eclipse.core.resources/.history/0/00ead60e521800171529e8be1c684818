@@ -1,0 +1,114 @@
+package employeepackage;
+
+import java.math.BigDecimal;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+
+public class Employee {
+	@NotNull(message = "No")
+	private String name;
+	@NotNull(message = "No")
+	private String jobTitle;
+	@NotNull(message = "No")
+	private String dateOfBirth;
+	@NotNull(message = "No")
+	private String department;
+	@NotNull(message = "No")
+	private String email;
+	
+	private Integer age;
+	private Integer id;
+	@DecimalMin(value = "0")
+	private BigDecimal salary;
+
+	public Employee(String name, Integer age, BigDecimal salary, String jobTitle, String dateOfBirth, String department,
+			String email, Integer id) {
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+		this.jobTitle = jobTitle;
+		this.dateOfBirth = dateOfBirth;
+		this.department = department;
+		this.email = email;
+		this.id = id;
+	}
+
+	public Employee(String name, Integer age, BigDecimal salary, String jobTitle, String dateOfBirth, String department,
+			String email) {
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+		this.jobTitle = jobTitle;
+		this.dateOfBirth = dateOfBirth;
+		this.department = department;
+		this.email = email;
+	}
+
+	public Employee() {
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAge() {
+		return this.age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public BigDecimal getSalary() {
+		return this.salary;
+	}
+
+	public void setSalary(BigDecimal salary) {
+		this.salary = salary;
+	}
+
+	public String getJobTitle() {
+		return this.jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public String getDateOfBirth() {
+		return this.dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getDepartment() {
+		return this.department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+}

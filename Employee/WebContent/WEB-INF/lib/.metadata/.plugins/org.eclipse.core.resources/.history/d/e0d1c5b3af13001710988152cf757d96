@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employees</title>
+</head>
+<body>
+	<table class="table">
+		<tr>
+			<th style="text-align: center">Name</th>
+			<th style="text-align: center">Age</th>
+			<th style="text-align: center">Salary</th>
+			<th style="text-align: center">Job</th>
+			<th style="text-align: center">Date Of Birth</th>
+			<th style="text-align: center">Department</th>
+			<th style="text-align: center">Email</th>
+		</tr>
+		<tr align="center" class="success">
+			<td>
+				<%
+					out.println(request.getParameter("name"));
+				%>
+			</td>
+			<td>
+				<%
+					out.println(request.getParameter("age"));
+				%>
+			</td>
+			<td>
+				<%
+					out.println(request.getParameter("salary"));
+				%>
+			</td>
+			<td>
+				<%
+					out.println(request.getParameter("jobTitle"));
+				%>
+			</td>
+			<td>
+				<%
+					out.println(request.getParameter("dateOfBirth"));
+				%>
+			</td>
+			<td>
+				<%
+					out.println(request.getParameter("department"));
+				%>
+			</td>
+			<td>
+				<%
+					out.println(request.getParameter("email"));
+				%>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

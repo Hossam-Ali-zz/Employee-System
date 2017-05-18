@@ -1,0 +1,23 @@
+package employeepackage;
+
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return null;
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] { "/" };
+	}
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

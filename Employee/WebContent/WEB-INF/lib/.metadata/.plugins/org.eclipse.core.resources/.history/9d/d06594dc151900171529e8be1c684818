@@ -1,0 +1,183 @@
+package employeepackage;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class UserDAOImpl implements UserDAO {
+	@Autowired
+	private DataSource dataSource;
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+	@Override
+	public void update(User e) {
+		String sql = "UPDATE `employee`.`users` SET `email` = ?, `password` = ? WHERE `id` =?";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, e.getEmail());
+			ps.setString(2, e.getPassword());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public void delete(int id) {
+		String sql = "delete from employee.users where id=? ";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public void insert(User e) {
+		Connection conn = null;
+		String sql = "INSERT INTO employee.users " + "(email, password) VALUES (?, ?)";
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, e.getEmail());
+			ps.setString(2, e.getPassword());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public List<User> select() {
+		String sql = "SELECT * FROM employee.users";
+		Connection conn = null;
+		try {
+			List<User> users = new ArrayList<User>();
+			conn = dataSource.getConnection();
+			 PreparedStatement ps = conn.prepareStatement(sql);
+			 ResultSet rs = ps.executeQuery();
+			User user = null;
+			// while (rs.next()) {
+			// emp = new Employee(rs.getString("name"), rs.getInt("Age"),
+			// rs.getBigDecimal("salary"),
+			// rs.getString("jobTitle"), rs.getString("dateOfBirth"),
+			// rs.getString("department"),
+			// rs.getString("email"), rs.getInt("id"));
+			// employees.add(emp);
+			// }
+			// rs.close();
+			// ps.close();
+			return users;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public User findById(int id) {
+		String sql = "SELECT * FROM employee.information WHERE id = ?";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			User E = null;
+			ResultSet rs = ps.executeQuery();
+			// if (rs.next()) {
+			// E = new Employee(rs.getString("name"), rs.getInt("Age"),
+			// rs.getBigDecimal("salary"),
+			// rs.getString("jobTitle"), rs.getString("dateOfBirth"),
+			// rs.getString("department"),
+			// rs.getString("email"), rs.getInt("id"));
+			// }
+			rs.close();
+			ps.close();
+			return E;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public Boolean checkLogin(String email) {
+		String sql = "SELECT * FROM employee.information WHERE email = ?";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				ps.close();
+				rs.close();
+				return true;
+			}
+			ps.close();
+			rs.close();
+			return false;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+}

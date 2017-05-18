@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+						http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="email" class="employeepackage.emailInfo" />
+
+	<view-state id="email" view="emailForm" model="email">
+		<on-render>
+			<evaluate expression="action.selectUsers()" result="viewScope.employees" />
+		</on-render>
+		<transition on="submitEmail" to="add" />
+		<transition on="cancelEmail" to="finish" />
+	</view-state>
+
+	<action-state id="add">
+		<evaluate expression="action.fillEmailInfo(email)" />
+		<transition to="openEmail" />
+	</action-state>
+
+	<view-state id="openEmail" view="emailBody" model="email">
+		<transition on="sentEmail" to="sentDecision" />
+	</view-state>
+
+	<decision-state id="sentDecision">
+		<if test="action.isChecked(email)" then="email" else="notChecked" />
+	</decision-state>
+
+	<action-state id="notChecked">
+		<evaluate expression="action.printAllNames(email)" />
+		<transition to="confirm" />
+	</action-state>
+
+	<view-state id="confirm" view="confirmEmail" model="email">
+		<transition on="send" to="finish" />
+	</view-state>
+
+	<end-state id="finish" view="externalRedirect:contextRelative:/welcome.jsp" />
+
+</flow>

@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Edit Employee</title>
+</head>
+<body>
+	<form action="saveEmployee" method="POST">
+		<table class="table table-condensed">
+			<tr>
+				<th>Name</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="name" value="${employee.name}"></td>
+			</tr>
+			<tr>
+				<th>Age</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="age" value="${employee.age}"></td>
+			</tr>
+			<tr>
+				<th>Salary</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="salary" value="${employee.salary}"></td>
+			</tr>
+			<tr>
+				<th>Job Title</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="jobTitle" value="${employee.jobTitle}"></td>
+			</tr>
+			<tr>
+				<th>Date Of Birth</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="dateOfBirth" value="${employee.dateOfBirth}"></td>
+			</tr>
+			<tr>
+				<th>Department</th>
+			</tr>
+			<tr>
+				<td><select name="department">
+						<option value="Software Engineer">Software Engineer</option>
+						<option value="IT">IT</option>
+						<option value="Finance">Finance</option>
+						<option value="Consultants">Consultants</option>
+				</select></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="email" value="${employee.email}"></td>
+			</tr>
+		</table>
+		<button type="submit" class="btn btn-info">Save</button>
+	</form>
+</body>
+</html>

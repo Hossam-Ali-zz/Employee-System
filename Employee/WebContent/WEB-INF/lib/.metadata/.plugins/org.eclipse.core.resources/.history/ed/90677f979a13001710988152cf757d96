@@ -1,0 +1,6 @@
+label.userName=User Name
+label.password = Password
+label.login.header=Enter below details to login
+label.login.submit=Submit
+login.success.title = Login Success
+login.success.welcome = Welcome {0}

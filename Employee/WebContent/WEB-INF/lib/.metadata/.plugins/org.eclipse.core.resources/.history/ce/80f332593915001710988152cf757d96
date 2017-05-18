@@ -1,0 +1,11 @@
+UserMessage.name[not.Null]=Please enter your name.
+UserMessage.jobTitle[not.Null]=Please enter your job title.
+UserMessage.dateOfBirth[not.Null]=Please enter your date of birth.
+UserMessage.department[not.Null]=Please enter your department.
+UserMessage.email[not.Null]=Please enter your job email.
+UserMessage.name[length]=Please enter no more than {2} characters.
+UserMessage.email[not.blank]=Please enter your e-mail address.
+UserMessage.email[email]=Please enter a valid e-mail address.
+UserMessage.email[length]=Please enter no more than {2} characters.
+UserMessage.text[not.blank]=Please enter a message.
+UserMessage.text[length]=Please enter no more than {2} characters.

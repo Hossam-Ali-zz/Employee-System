@@ -1,0 +1,68 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title><spring:message code="employee.titleList" text="default text" /></title>
+</head>
+<body>
+	<table class="table table-striped">
+		<tr>
+			<th style="text-align: center"><spring:message code="employee.name" text="default text" /></th>
+			<th style="text-align: center"><spring:message code="employee.age" text="default text" /></th>
+			<th style="text-align: center"><spring:message code="employee.salary" text="default text" /></th>
+			<th style="text-align: center"><spring:message code="employee.jobTitle" text="default text" /></th>
+			<th style="text-align: center">Date Of Birth</th>
+			<th style="text-align: center">Department</th>
+			<th style="text-align: center">Email</th>
+			<th style="text-align: center">View</th>
+			<th style="text-align: center">Edit</th>
+			<th style="text-align: center">Delete</th>
+		</tr>
+		<c:forEach items="${Emp}" var="myItem">
+			<tr align="center">
+				<td><c:out value="${myItem.name}" /></td>
+				<td><c:out value="${myItem.age}" /></td>
+				<td><c:out value="${myItem.salary}" /></td>
+				<td><c:out value="${myItem.jobTitle}" /></td>
+				<td><c:out value="${myItem.dateOfBirth}" /></td>
+				<td><c:out value="${myItem.department}" /></td>
+				<td><c:out value="${myItem.email}" /></td>
+				<td>
+					<form action="viewEmployee" method="GET">
+						<button type="submit" class="btn btn-info">View</button>
+						<input type="hidden" name="idId" value="${myItem.id}" /> <input
+							type="hidden" name="idName" value="${myItem.name}" /> <input
+							type="hidden" name="idAge" value="${myItem.age}" /> <input
+							type="hidden" name="idSalary" value="${myItem.salary}" /> <input
+							type="hidden" name="idJobTitle" value="${myItem.jobTitle}" /> <input
+							type="hidden" name="idDateOfBirth" value="${myItem.dateOfBirth}" />
+						<input type="hidden" name="idDepartment"
+							value="${myItem.department}" /> <input type="hidden"
+							name="idEmail" value="${myItem.email}" />
+					</form>
+				</td>
+				<td>
+					<form action="editEmployee" method="POST">
+						<button type="submit" class="btn btn-warning">Edit</button>
+						<input type="hidden" name="idId" value="${myItem.id}" /> 
+					</form>
+				</td>
+				<td>
+					<form action="deleteEmployee" method="POST">
+						<button id="del" type="submit" class="btn btn-danger"
+							onclick="return confirm('Are you sure you want to continue')">Delete</button>
+						<input type="hidden" name="idSalary" value="${myItem.salary}" />
+						<input type="hidden" name="idId" value="${myItem.id}" />
+					</form>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+</body>
+</html>

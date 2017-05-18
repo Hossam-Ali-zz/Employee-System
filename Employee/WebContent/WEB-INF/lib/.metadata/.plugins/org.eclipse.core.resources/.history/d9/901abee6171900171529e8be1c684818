@@ -1,0 +1,42 @@
+package employeepackage;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class UserService {
+	@Autowired
+	private UserDAO edao;
+
+	public UserDAO getEdao() {
+		return edao;
+	}
+
+	public void setEdao(UserDAO edao) {
+		this.edao = edao;
+	}
+
+	public void updateUser(User user) {
+		edao.update(user);
+	}
+
+	public User findById(int id) {
+		return edao.findById(id);
+	}
+
+	public void deleteUser(int id) {
+		edao.delete(id);
+	}
+
+	public void insertUser(User user) {
+		edao.insert(user);
+	}
+
+	public List<User> selectUser() {
+		return edao.select();
+	}
+
+	public Boolean checkLogin(String email) {
+		return edao.checkLogin(email);
+	}
+}

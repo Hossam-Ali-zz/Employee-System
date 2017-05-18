@@ -1,0 +1,84 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="C:\Users\hali\Desktop\Projects\Employee\css\style.css">
+</head>
+<body>
+	<a href="?lang=en">English</a> |
+	<a href="?lang=de">Germany</a>
+	<h1 align="center">
+		<spring:message code="employee.titleAdd" />
+	</h1>
+	<div class="container">
+		<form action="createEmployee" method="POST" commandName="emp">
+			<table class="table table-condensed">
+				<tr>
+					<th><spring:message code="employee.name" /></th>
+				</tr>
+				<tr>
+					<td><input type="text" name="name"></td>
+					<td align="left"><form:errors path="name" cssClass="error"/></td>
+				</tr>
+				<tr>
+					<th><spring:message code="employee.age" /></th>
+				</tr>
+				<tr>
+					<td><input type="text" name="age"></td>
+				</tr>
+				<tr>
+					<th><spring:message code="employee.salary" /></th>
+				</tr>
+				<tr>
+					<td><input type="text" name="salary"></td>
+				</tr>
+				<tr>
+					<th><spring:message code="employee.jobTitle" /></th>
+				</tr>
+				<tr>
+					<td><input type="text" name="jobTitle"></td>
+				</tr>
+				<tr>
+					<th><spring:message code="employee.dateOfBirth" /></th>
+				</tr>
+				<tr>
+					<td><input type="text" name="dateOfBirth"></td>
+				</tr>
+				<tr>
+					<th><spring:message code="employee.department" /></th>
+				</tr>
+				<tr>
+					<td><select name="department">
+							<option value="Software Engineer">Software Engineer</option>
+							<option value="IT">IT</option>
+							<option value="Finance">Finance</option>
+							<option value="Consultant">Consultant</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th><spring:message code="employee.email" /></th>
+				</tr>
+				<tr>
+					<td><input type="text" name="email"></td>
+				</tr>
+			</table>
+			<input class="btn btn-primary btn-md" type="submit" value="submit">
+		</form>
+		<form action="listEmployees" method="GET">
+			<input class="btn btn-success btn-md" type="submit"
+				value="List All Employees">
+		</form>
+	</div>
+</body>
+</html>

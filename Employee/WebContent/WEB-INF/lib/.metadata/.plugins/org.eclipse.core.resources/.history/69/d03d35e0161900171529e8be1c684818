@@ -1,0 +1,6 @@
+package employeepackage;
+
+@Controller
+public class UserController {
+
+}

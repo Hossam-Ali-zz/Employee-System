@@ -1,0 +1,14 @@
+employee.titleAdd     = Mitarbeiter Hinzufügen
+employee.titleEdit    = Mitarbeiter Bearbeiten
+employee.titleList    = Liste Mitarbeiter
+employee.name         = Name
+employee.age          = Alter
+employee.salary       = Gehalt
+employee.jobTitle     = Berufsbezeichnung
+employee.dateOfBirth  = Geburtsdatum
+employee.department   = Abteilung
+employee.email        = Email
+employee.view         = Aussicht
+employee.edit         = Bearbeiten
+employee.delete       = löschen
+employee.submit       = Einreichen

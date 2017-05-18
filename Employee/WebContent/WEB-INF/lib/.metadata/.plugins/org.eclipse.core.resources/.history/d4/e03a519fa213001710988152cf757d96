@@ -1,0 +1,12 @@
+employee.title       = Add Employee
+employee.name        = Nameasdasds
+employee.age         = Age
+employee.salary      = Salary
+employee.jobTitle    = Job Title
+employee.dateOfBirth = Date Of Birth
+employee.department  = Department
+employee.email       = Email
+employee.view        = View
+employee.edit        = Edit
+employee.delete      = Delete
+employee.submit      = Submit

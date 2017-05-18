@@ -1,0 +1,65 @@
+package employeepackage;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Vector;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class InputEmployee extends HttpServlet 
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static Vector <Employee> employees = new Vector <Employee>(10,2);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    		throws ServletException, IOException 
+    {
+    	String name = request.getParameter("name");
+        String age = request.getParameter("age");
+        String salary = request.getParameter("salary");
+        String job = request.getParameter("job");
+        String dateOfBirth = request.getParameter("dob");
+        String department = request.getParameter("department");
+        String email = request.getParameter("email");
+        newEmployee(name, age, salary, job, dateOfBirth, department, email);
+        PrintWriter out = response.getWriter();
+        out.println 
+        (
+			"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
+			"http://www.w3.org/TR/html4/loose.dtd\">\n" +
+			"<html> \n" +
+				"<head> \n" +
+					"<meta http-equiv=\"Content-Type\" content=\"text/html; " +
+					"charset=ISO-8859-1\"> \n" +
+					"<title> Employee </title> \n" +
+				"</head> \n" +
+				"<body> <div align='center'> \n" +
+					"<style= \"font-size=\"12px\" color='black'\"" + "\">" +
+					"name: " + name + " <br> " + 
+					"age: " + age + " <br> " + 
+					"salary: " + salary + " <br> " + 
+					"dob: " + dateOfBirth + " <br> " + 
+					"department: " + department + " <br> " + 
+					"email: " + email + " <br> " +
+				"</font></body> \n" +
+			"</html>" 
+        );      
+    }
+    public static void newEmployee ( String name, String age, String salary, String job, String dateOfBirth, 
+    		String department, String email )
+    {
+    	Employee emp = new Employee ();
+    	emp.name = name;
+    	emp.age = age;
+    	emp.salary = salary;
+    	emp.jobTitle=job;
+    	emp.dateOfBirth = dateOfBirth;
+    	emp.department = department;
+    	emp.email = email;
+    	employees.add(emp);
+    	return ;
+    }
+}
