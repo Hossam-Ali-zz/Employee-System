@@ -66,7 +66,7 @@
 			<c:forEach items="${Emp}" var="myItem">
 				<tr align="center" id="employeeInformation">
 					<td
-						onclick="showUrlInDialog('${pageContext.request.contextPath}/employees/${myItem.id}'); return false;"><c:out
+						onclick="showUrlInDialog('<c:url value="/employees/${myItem.id}"/>'); return false;"><c:out
 							value="${myItem.name}" /></td>
 					<td><c:out value="${myItem.age}" /></td>
 					<td><c:out value="${myItem.salary}" /></td>
